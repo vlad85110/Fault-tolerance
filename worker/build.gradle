@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'kirilov.me'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web-services'
+    implementation 'org.projectlombok:lombok:1.18.28'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.github.dpaukov:combinatoricslib3:3.4.0'
+    implementation 'org.springframework.amqp:spring-rabbit-stream'
+    implementation 'ch.qos.logback:logback-classic'
+}
+
+bootJar {
+    archiveBaseName = 'worker'
+    archiveVersion = '0.1.0'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+
