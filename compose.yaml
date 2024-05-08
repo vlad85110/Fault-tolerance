@@ -4,9 +4,9 @@ services:
       - worker
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./manager/Dockerfile
     volumes:
-      - ./build/libs:/app/build/libs
+      - ./manager/build/libs:/app/build/libs
     ports:
       - "8080:8080"
     environment:
@@ -16,9 +16,9 @@ services:
   worker:
     build:
       context: .
-      dockerfile: ../worker/Dockerfile
+      dockerfile: ./worker/Dockerfile
     volumes:
-      - ../worker/build/libs:/app/build/libs
+      - ./worker/build/libs:/app/build/libs
     deploy:
       mode: replicated
       replicas: 2
