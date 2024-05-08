@@ -63,6 +63,7 @@ cd worker
 ./gradlew bootJar
 cd ../manager
 ./gradlew bootJar
+cd ..
 docker compose up
 ```
 
